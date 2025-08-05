@@ -28,3 +28,11 @@ GenericKafka:
       type: string
     partitionKey:
       type: string
+  discriminator:
+    propertyName: messageModelType
+    mapping:
+      TASK_DLQ: './dlq/taskDlq.yaml#/TaskDlq'
+      INSTANCE_DLQ: './dlq/instanceDlq.yaml#/InstanceDlq'
+      IPE_AUDIT: './audit/bpm/ipeAudit.yaml#/IpeAudit'
+      CAMUNDA_AUDIT: './audit/bpm/camundaAudit.yaml#/CamundaAudit'
+      APPLICATION_AUDIT: './audit/application/applicationAudit.yaml#/ApplicationAudit'
