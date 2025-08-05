@@ -10,17 +10,27 @@ components:
       $ref: './schemas/kafkaEnvelope.yaml#/KafkaEnvelope'
     GenericKafka:
       $ref: './schemas/genericKafka.yaml#/GenericKafka'
+
+    # audit
     AuditKafka:
-      $ref: './schemas/audit/bpm/bpmAudit.yaml#/AuditKafka'
+      $ref: './schemas/audit/auditKafka.yaml#/AuditKafka'
+    BpmAudit:
+      $ref: './schemas/audit/bpm/bpmAudit.yaml#/BpmAudit'
     IpeAudit:
-      $ref: './schemas/audit/bpm/ipeAudit.yaml#/IpeAuditKafka'
+      $ref: './schemas/audit/bpm/ipeAudit.yaml#/IpeAudit'
     CamundaAudit:
-      $ref: './schemas/audit/bpm/camundaAudit.yaml#/CamundaAuditKafka'
+      $ref: './schemas/audit/bpm/camundaAudit.yaml#/CamundaAudit'
     ApplicationAudit:
-      $ref: './schemas/audit/application/applicationAudit.yaml#/ApplicationAuditKafka'
+      $ref: './schemas/audit/application/applicationAudit.yaml#/ApplicationAudit'
+
+    # dlq
     GenericDlq:
-      $ref: './schemas/dlq/genericDlq.yaml#/GenericDlqKafka'
+      $ref: './schemas/dlq/genericDlq.yaml#/GenericDlq'
     TaskDlq:
-      $ref: './schemas/dlq/taskDlq.yaml#/TaskDlqKafka'
+      $ref: './schemas/dlq/taskDlq.yaml#/TaskDlq'
     InstanceDlq:
-      $ref: './schemas/dlq/instanceDlq.yaml#/InstanceDlqKafka'
+      $ref: './schemas/dlq/instanceDlq.yaml#/InstanceDlq'
+
+    # enums
+    BpmType:
+      $ref: './schemas/enums/bpmType.yaml#/BpmType'

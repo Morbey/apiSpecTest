@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: Kafka Message Models
+  version: 1.0.0
+servers:
+- url: /
+paths: {}
+components:
+  schemas:
+    KafkaEnvelope:
+      discriminator:
+        mapping:
+          TASK_DLQ: '#/components/schemas/TaskDlq'
+          INSTANCE_DLQ: '#/components/schemas/InstanceDlq'
+          IPE_AUDIT: '#/components/schemas/IpeAudit'
+          CAMUNDA_AUDIT: '#/components/schemas/CamundaAudit'
+          APPLICATION_AUDIT: '#/components/schemas/ApplicationAudit'
+        propertyName: messageModelType
+      oneOf:
+      - $ref: '#/components/schemas/TaskDlq'
+      - $ref: '#/components/schemas/InstanceDlq'
+      - $ref: '#/components/schemas/IpeAudit'
+      - $ref: '#/components/schemas/CamundaAudit'
+      - $ref: '#/components/schemas/ApplicationAudit'
+    GenericKafka:
+      properties:
+        messageId:
+          type: string
+        timestamp:
+          format: date-time
+          type: string
+        op_timestamp:
+          format: date-time
+          type: string
+        sync_msg_id:
+          type: string
+        sourceService:
+          type: string
+        messageModelType:
+          $ref: '#/components/schemas/MessageModelType'
+        version:
+          type: string
+        aggregateId:
+          type: string
+        partitionKey:
+          type: string
+      required:
+      - messageId
+      - messageModelType
+      - op_timestamp
+      - sourceService
+      - sync_msg_id
+      - timestamp
+      type: object
+    AuditKafka:
+      allOf:
+      - $ref: '#/components/schemas/GenericKafka'
+      - properties:
+          auditType:
+            $ref: '#/components/schemas/BpmType'
+        required:
+        - auditType
+        type: object
+    BpmAudit:
+      allOf:
+      - $ref: '#/components/schemas/AuditKafka'
+      properties:
+        bpmType:
+          $ref: '#/components/schemas/BpmType'
+      required:
+      - bpmType
+      type: object
+    IpeAudit:
+      allOf:
+      - $ref: '#/components/schemas/BpmAudit'
+      - properties:
+          bpmSpecificField:
+            type: string
+        required:
+        - bpmSpecificField
+        type: object
+    CamundaAudit:
+      allOf:
+      - $ref: '#/components/schemas/BpmAudit'
+      - properties:
+          camundaField:
+            type: string
+        required:
+        - camundaField
+        type: object
+    ApplicationAudit:
+      allOf:
+      - $ref: '#/components/schemas/AuditKafka'
+      - properties:
+          applicationName:
+            type: string
+        required:
+        - applicationName
+        type: object
+    GenericDlq:
+      allOf:
+      - $ref: '#/components/schemas/GenericKafka'
+      - properties:
+          originalPayload:
+            type: string
+          originalTopic:
+            type: string
+          originalPartition:
+            type: integer
+          originalConsumerGroup:
+            type: string
+          errorType:
+            $ref: '#/components/schemas/ErrorType'
+          errorMsg:
+            type: string
+        required:
+        - errorMsg
+        - errorType
+        - originalConsumerGroup
+        - originalPartition
+        - originalPayload
+        - originalTopic
+        type: object
+    TaskDlq:
+      allOf:
+      - $ref: '#/components/schemas/GenericDlq'
+      - properties:
+          taskId:
+            type: string
+        required:
+        - taskId
+        type: object
+    InstanceDlq:
+      allOf:
+      - $ref: '#/components/schemas/GenericDlq'
+      - properties:
+          instanceId:
+            type: string
+        required:
+        - instanceId
+        type: object
+    BpmType:
+      enum:
+      - IPE
+      - CAMUNDA
+      type: string
+    MessageModelType:
+      enum:
+      - TASK_DLQ
+      - INSTANCE_DLQ
+      - IPE_AUDIT
+      - CAMUNDA_AUDIT
+      - APPLICATION_AUDIT
+      type: string
+    ErrorType:
+      enum:
+      - PARSE_ERROR
+      - PROCESSING_ERROR
+      - TIMEOUT
+      type: string
+

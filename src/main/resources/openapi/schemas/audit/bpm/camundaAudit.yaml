@@ -1,6 +1,6 @@
 CamundaAudit:
   allOf:
-    - $ref: '../auditKafka.yaml#/AuditKafka'
+    - $ref: './bpmAudit.yaml#/BpmAudit'
     - type: object
       required:
         - camundaField
