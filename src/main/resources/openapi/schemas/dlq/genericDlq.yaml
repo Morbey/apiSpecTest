@@ -25,5 +25,5 @@ GenericDlq:
   discriminator:
     propertyName: messageModelType
     mapping:
-      TaskDlq: './taskDlq.yaml#/TaskDlq'
-      InstanceDlq: './instanceDlq.yaml#/InstanceDlq'
+      TaskDlq: '#/components/schemas/TaskDlq'
+      InstanceDlq: '#/components/schemas/InstanceDlq'
