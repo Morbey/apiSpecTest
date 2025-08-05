@@ -1,8 +1,8 @@
 MessageModelType:
   type: string
   enum:
-    - TASK_DLQ
-    - INSTANCE_DLQ
-    - IPE_AUDIT
-    - CAMUNDA_AUDIT
-    - APPLICATION_AUDIT
+    - TaskDlq
+    - InstanceDlq
+    - IpeAudit
+    - CamundaAudit
+    - ApplicationAudit

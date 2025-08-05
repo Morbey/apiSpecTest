@@ -31,8 +31,8 @@ GenericKafka:
   discriminator:
     propertyName: messageModelType
     mapping:
-      TASK_DLQ: './dlq/taskDlq.yaml#/TaskDlq'
-      INSTANCE_DLQ: './dlq/instanceDlq.yaml#/InstanceDlq'
-      IPE_AUDIT: './audit/bpm/ipeAudit.yaml#/IpeAudit'
-      CAMUNDA_AUDIT: './audit/bpm/camundaAudit.yaml#/CamundaAudit'
-      APPLICATION_AUDIT: './audit/application/applicationAudit.yaml#/ApplicationAudit'
+      TaskDlq: './dlq/taskDlq.yaml#/TaskDlq'
+      InstanceDlq: './dlq/instanceDlq.yaml#/InstanceDlq'
+      IpeAudit: './audit/bpm/ipeAudit.yaml#/IpeAudit'
+      CamundaAudit: './audit/bpm/camundaAudit.yaml#/CamundaAudit'
+      ApplicationAudit: './audit/application/applicationAudit.yaml#/ApplicationAudit'
