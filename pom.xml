@@ -28,7 +28,6 @@
                 <useJakartaEe>true</useJakartaEe>
                 <modelSuffix>MessageModel</modelSuffix>
                 <useLombokAnnotations>true</useLombokAnnotations>
-                <library>native</library>
                 <useOneOfDiscriminatorLookup>true</useOneOfDiscriminatorLookup>
                 <additionalModelTypeAnnotation>
                   @lombok.experimental.SuperBuilder
