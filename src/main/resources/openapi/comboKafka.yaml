@@ -6,8 +6,6 @@ paths: {}
 
 components:
   schemas:
-    KafkaEnvelope:
-      $ref: './schemas/kafkaEnvelope.yaml#/KafkaEnvelope'
     GenericKafka:
       $ref: './schemas/genericKafka.yaml#/GenericKafka'
 
