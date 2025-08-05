@@ -19,21 +19,53 @@
             </goals>
             <configuration>
               <inputSpec>${project.basedir}/src/main/resources/openapi/comboKafka.yaml</inputSpec>
-              <generatorName>java</generatorName>
+              <generatorName>spring</generatorName>
               <output>${project.build.directory}/generated-sources/openapi</output>
-              <apiPackage>com.example.kafka.api</apiPackage>
-              <modelPackage>com.example.kafka.model</modelPackage>
+              <modelPackage>com.myproject.library.kafka.model</modelPackage>
               <configOptions>
-                <sourceFolder>src/gen/java</sourceFolder>
+                <java8>true</java8>
+                <useTags>true</useTags>
+                <useJakartaEe>true</useJakartaEe>
                 <modelSuffix>MessageModel</modelSuffix>
                 <useLombokAnnotations>true</useLombokAnnotations>
-                <useTags>true</useTags>
                 <library>native</library>
+                <useOneOfDiscriminatorLookup>true</useOneOfDiscriminatorLookup>
+                <additionalModelTypeAnnotation>
+                  @lombok.experimental.SuperBuilder
+                  @lombok.Data
+                  @lombok.NoArgsConstructor
+                  @lombok.AllArgsConstructor
+                </additionalModelTypeAnnotation>
               </configOptions>
+              <generateApis>false</generateApis>
+              <generateModels>true</generateModels>
+              <generateSupportingFiles>false</generateSupportingFiles>
+              <modelNameSuffix>MessageModel</modelNameSuffix>
+              <additionalProperties>
+                <modelInheritance>true</modelInheritance>
+              </additionalProperties>
             </configuration>
           </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.openapitools</groupId>
+      <artifactId>jackson-databind-nullable</artifactId>
+      <version>0.2.6</version>
+    </dependency>
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-annotations</artifactId>
+      <version>2.2.31</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.38</version>
+    </dependency>
+  </dependencies>
 </project>
