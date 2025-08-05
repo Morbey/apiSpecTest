@@ -22,3 +22,8 @@ GenericDlq:
           $ref: '../enums/errorType.yaml#/ErrorType'
         errorMsg:
           type: string
+  discriminator:
+    propertyName: messageModelType
+    mapping:
+      TASK_DLQ: './taskDlq.yaml#/TaskDlq'
+      INSTANCE_DLQ: './instanceDlq.yaml#/InstanceDlq'

@@ -7,3 +7,9 @@ AuditKafka:
       properties:
         auditType:
           $ref: '../enums/bpmType.yaml#/BpmType'
+  discriminator:
+    propertyName: messageModelType
+    mapping:
+      IPE_AUDIT: './bpm/ipeAudit.yaml#/IpeAudit'
+      CAMUNDA_AUDIT: './bpm/camundaAudit.yaml#/CamundaAudit'
+      APPLICATION_AUDIT: './application/applicationAudit.yaml#/ApplicationAudit'
