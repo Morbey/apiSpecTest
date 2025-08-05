@@ -1,0 +1,24 @@
+GenericDlq:
+  allOf:
+    - $ref: '../genericKafka.yaml#/GenericKafka'
+    - type: object
+      required:
+        - originalPayload
+        - originalTopic
+        - originalPartition
+        - originalConsumerGroup
+        - errorType
+        - errorMsg
+      properties:
+        originalPayload:
+          type: string
+        originalTopic:
+          type: string
+        originalPartition:
+          type: integer
+        originalConsumerGroup:
+          type: string
+        errorType:
+          $ref: '../enums/errorType.yaml#/ErrorType'
+        errorMsg:
+          type: string

@@ -1,0 +1,9 @@
+ApplicationAudit:
+  allOf:
+    - $ref: '../auditKafkaMessage.yaml#/AuditKafkaMessage'
+    - type: object
+      required:
+        - applicationName
+      properties:
+        applicationName:
+          type: string

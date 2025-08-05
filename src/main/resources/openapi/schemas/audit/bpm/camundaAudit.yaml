@@ -1,0 +1,9 @@
+CamundaAudit:
+  allOf:
+    - $ref: '../auditKafka.yaml#/AuditKafka'
+    - type: object
+      required:
+        - camundaField
+      properties:
+        camundaField:
+          type: string

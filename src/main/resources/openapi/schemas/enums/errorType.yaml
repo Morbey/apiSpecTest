@@ -1,0 +1,6 @@
+ErrorType:
+  type: string
+  enum:
+    - PARSE_ERROR
+    - PROCESSING_ERROR
+    - TIMEOUT

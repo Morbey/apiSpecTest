@@ -1,0 +1,5 @@
+BpmType:
+  type: string
+  enum:
+    - IPE
+    - CAMUNDA

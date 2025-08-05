@@ -1,0 +1,30 @@
+GenericKafka:
+  type: object
+  required:
+    - messageId
+    - timestamp
+    - op_timestamp
+    - sync_msg_id
+    - sourceService
+    - messageModelType
+  properties:
+    messageId:
+      type: string
+    timestamp:
+      type: string
+      format: date-time
+    op_timestamp:
+      type: string
+      format: date-time
+    sync_msg_id:
+      type: string
+    sourceService:
+      type: string
+    messageModelType:
+      $ref: './enums/messageModelType.yaml#/MessageModelType'
+    version:
+      type: string
+    aggregateId:
+      type: string
+    partitionKey:
+      type: string

@@ -1,0 +1,9 @@
+TaskDlq:
+  allOf:
+    - $ref: './genericDlq.yaml#/GenericDlq'
+    - type: object
+      required:
+        - taskId
+      properties:
+        taskId:
+          type: string

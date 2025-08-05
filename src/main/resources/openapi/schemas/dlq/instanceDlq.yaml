@@ -1,0 +1,9 @@
+InstanceDlq:
+  allOf:
+    - $ref: './genericDlq.yaml#/GenericDlq'
+    - type: object
+      required:
+        - instanceId
+      properties:
+        instanceId:
+          type: string

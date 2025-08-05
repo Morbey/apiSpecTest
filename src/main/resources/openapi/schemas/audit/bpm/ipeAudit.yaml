@@ -1,0 +1,9 @@
+IpeAudit:
+  allOf:
+    - $ref: '../auditKafka.yaml#/AuditKafka'
+    - type: object
+      required:
+        - bpmSpecificField
+      properties:
+        bpmSpecificField:
+          type: string

@@ -1,0 +1,26 @@
+openapi: 3.0.3
+info:
+  title: Kafka Message Models
+  version: 1.0.0
+paths: {}
+
+components:
+  schemas:
+    KafkaEnvelope:
+      $ref: './schemas/kafkaEnvelope.yaml#/KafkaEnvelope'
+    GenericKafka:
+      $ref: './schemas/genericKafka.yaml#/GenericKafka'
+    AuditKafka:
+      $ref: './schemas/audit/bpm/bpmAudit.yaml#/AuditKafka'
+    IpeAudit:
+      $ref: './schemas/audit/bpm/ipeAudit.yaml#/IpeAuditKafka'
+    CamundaAudit:
+      $ref: './schemas/audit/bpm/camundaAudit.yaml#/CamundaAuditKafka'
+    ApplicationAudit:
+      $ref: './schemas/audit/application/applicationAudit.yaml#/ApplicationAuditKafka'
+    GenericDlq:
+      $ref: './schemas/dlq/genericDlq.yaml#/GenericDlqKafka'
+    TaskDlq:
+      $ref: './schemas/dlq/taskDlq.yaml#/TaskDlqKafka'
+    InstanceDlq:
+      $ref: './schemas/dlq/instanceDlq.yaml#/InstanceDlqKafka'

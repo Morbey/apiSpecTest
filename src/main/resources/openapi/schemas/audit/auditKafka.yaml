@@ -1,0 +1,9 @@
+AuditKafka:
+  allOf:
+    - $ref: '../genericKafka.yaml#/GenericKafka'
+    - type: object
+      required:
+        - auditType
+      properties:
+        auditType:
+          $ref: '../enums/bpmType.yaml#/BpmType'
