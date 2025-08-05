@@ -10,6 +10,6 @@ AuditKafka:
   discriminator:
     propertyName: messageModelType
     mapping:
-      IpeAudit: '#/components/schemas/IpeAudit'
-      CamundaAudit: '#/components/schemas/CamundaAudit'
-      ApplicationAudit: '#/components/schemas/ApplicationAudit'
+      IpeAudit: './bpm/ipeAudit.yaml#/IpeAudit'
+      CamundaAudit: './bpm/camundaAudit.yaml#/CamundaAudit'
+      ApplicationAudit: './application/applicationAudit.yaml#/ApplicationAudit'

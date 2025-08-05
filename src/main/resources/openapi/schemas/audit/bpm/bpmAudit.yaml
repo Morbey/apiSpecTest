@@ -7,3 +7,8 @@ BpmAudit:
       properties:
         bpmType:
           $ref: '../../enums/bpmType.yaml#/BpmType'
+      discriminator:
+        propertyName: messageModelType
+        mapping:
+          IpeAudit: './ipeAudit.yaml#/IpeAudit'
+          CamundaAudit: './camundaAudit.yaml#/CamundaAudit'
